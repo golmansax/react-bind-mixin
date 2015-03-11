@@ -50,11 +50,12 @@ component.  Simply mock out the associated store functions.  Below is an
 example using the Mocha/sinon test framework.
 
 ```jsx
-sinon.stub(MyStore, 'getValue').returns('Hello');
+sinon.stub(MyStore, 'getValue');
+MyStore.getValue.returns('Hello');
 var component = React.addons.TestUtils.renderIntoDocument(<Component />);
 expect(component.text).to.equal('Hello');
 
-StoreActions.setValue('Goodbye');
+MyStore.getValue.returns('Goodbye');
 expect(component.text).to.equal('Goodbye');
 ```
 
