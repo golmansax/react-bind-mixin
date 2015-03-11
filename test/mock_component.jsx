@@ -1,11 +1,11 @@
 'use strict';
 
 var React = require('react');
-var Store = require('./store_mock');
+var Store = require('./mock_store');
 var BindMixin = require('../lib/bind_mixin');
 
 var Component = React.createClass({
-  mixin: [BindMixin(Store, 'getStateFromStore')],
+  mixins: [BindMixin(Store, 'getStateFromStore')],
 
   getStateFromStore: function () {
     return { value: Store.getValue() };
