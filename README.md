@@ -1,6 +1,7 @@
 # React Bind Mixin
 
 A React mixin used to simplify the binding between components and data stores.
+Can be plugged into virtually any Flux implementation!
 
 ## Sample Usage
 Given a Store with the following API:
@@ -22,7 +23,7 @@ var Component = React.createClass({
   mixins: [BindMixin(MyStore, 'getStateFromStore')],
 
   getStateFromStore: function () {
-    // This part is custom to the store implementation
+    // This part can be custom to the store implementation
     return {
       value: MyStore.getValue()
     };
@@ -48,6 +49,9 @@ example using the Mocha/sinon test framework.
 sinon.stub(MyStore, 'getValue').returns('Hello');
 var component = React.addons.TestUtils.renderIntoDocument(<Component />);
 expect(component.text).to.equal('Hello');
+
+StoreActions.setValue('Goodbye');
+expect(component.text).to.equal('Goodbye');
 ```
 
 ## Installation
