@@ -1,0 +1,37 @@
+{
+  "name": "react-bind-mixin",
+  "description": "A React mixin used to simplify the binding between components and data stores.",
+  "license": "MIT",
+  "author": "Holman Gao <holman@golmansax.com>",
+  "version": "0.0.1",
+  "main": "lib/bind_mixin.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/golmansax/react-bind-mixin.git"
+  },
+  "keywords": [
+    "react",
+    "mixin",
+    "flux",
+    "binding",
+    "store"
+  ],
+  "devDependencies": {
+    "chai": "1.9.2",
+    "dirty-chai": "latest",
+    "codeclimate-test-reporter": "latest",
+    "istanbul": "latest",
+    "jscs": "latest",
+    "jshint": "latest",
+    "mocha": "latest",
+    "sinon": "latest",
+    "sinon-chai": "latest",
+    "travis-lint": "latest"
+  },
+  "dependencies": {
+    "object-hash": "latest"
+  },
+  "scripts": {
+    "test": "make test"
+  }
+}
