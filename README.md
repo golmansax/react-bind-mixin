@@ -1,5 +1,9 @@
 # React Bind Mixin
 
+[![Build Status](https://travis-ci.org/golmansax/react-bind-mixin.svg?branch=master)](https://travis-ci.org/golmansax/react-bind-mixin)
+[![Code Climate](https://codeclimate.com/github/golmansax/react-bind-mixin/badges/gpa.svg)](https://codeclimate.com/github/golmansax/react-bind-mixin)
+[![Test Coverage](https://codeclimate.com/github/golmansax/react-bind-mixin/badges/coverage.svg)](https://codeclimate.com/github/golmansax/react-bind-mixin)
+
 A React mixin used to simplify the binding between components and data stores.
 Can be plugged into virtually any Flux implementation!
 
