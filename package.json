@@ -3,7 +3,7 @@
   "description": "A React mixin used to simplify the binding between components and data stores.",
   "license": "MIT",
   "author": "Holman Gao <holman@golmansax.com>",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "lib/bind_mixin.js",
   "repository": {
     "type": "git",
