@@ -3,10 +3,10 @@
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
-var _value = 'initial';
+var _value = 'first';
 var CHANGE_EVENT = 'change';
 
-var Store = assign({}, EventEmitter.prototype, {
+var StoreOne = assign({}, EventEmitter.prototype, {
   getValue: function () {
     return _value;
   },
@@ -29,4 +29,4 @@ var Store = assign({}, EventEmitter.prototype, {
   }
 });
 
-module.exports = Store;
+module.exports = StoreOne;

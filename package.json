@@ -20,6 +20,7 @@
     "chai": "1.9.2",
     "dirty-chai": "latest",
     "codeclimate-test-reporter": "latest",
+    "esprima-fb": "12001.1.0-dev-harmony-fb",
     "istanbul": "latest",
     "jscs": "latest",
     "jsdom": "3.x",
@@ -33,7 +34,7 @@
     "travis-lint": "latest"
   },
   "dependencies": {
-    "object-hash": "latest"
+    "node-uuid": "latest"
   },
   "scripts": {
     "test": "make test"

@@ -22,5 +22,8 @@
     ".jshintrc",
     ".jscsrc",
     ".travis.yml"
-  ]
+  ],
+  "dependencies": {
+    "node-uuid": "latest"
+  }
 }

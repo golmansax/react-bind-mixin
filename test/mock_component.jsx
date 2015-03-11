@@ -1,18 +1,30 @@
 'use strict';
 
 var React = require('react');
-var Store = require('./mock_store');
+var StoreOne = require('./mock_store_one');
+var StoreTwo = require('./mock_store_two');
 var BindMixin = require('../lib/bind_mixin');
 
 var Component = React.createClass({
-  mixins: [BindMixin(Store, 'getStateFromStore')],
+  mixins: [
+    BindMixin(StoreOne, 'getStateFromStoreOne'),
+    BindMixin(StoreTwo, 'getStateFromStoreTwo')
+  ],
 
-  getStateFromStore: function () {
-    return { value: Store.getValue() };
+  getStateFromStoreOne: function () {
+    return {
+      valueOne: StoreOne.getValue()
+    };
+  },
+
+  getStateFromStoreTwo: function () {
+    return {
+      valueTwo: StoreTwo.getValue()
+    };
   },
 
   render: function () {
-    return <div>{this.state.value}</div>
+    return <div>{this.state.valueOne},{this.state.valueTwo}</div>;
   }
 });
 

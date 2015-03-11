@@ -1,6 +1,7 @@
 {
   "preset": "google",
   "excludeFiles": ["node_modules/**", "vendor/**"],
+  "fileExtensions": [".js", ".jsx"],
 
   "requireSpacesInAnonymousFunctionExpression": {
     "beforeOpeningRoundBrace": true
