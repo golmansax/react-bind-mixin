@@ -6,7 +6,6 @@ require('./mock_dom');
 var chai = require('chai');
 chai.use(require('dirty-chai'));
 var expect = chai.expect;
-var BindMixin = require('../lib/bind_mixin');
 var sinon = require('sinon');
 chai.use(require('sinon-chai'));
 
