@@ -11,6 +11,10 @@ var Component = React.createClass({
     BindMixin(StoreTwo, 'getStateFromStoreTwo')
   ],
 
+  propTypes: {
+    number: React.PropTypes.number.isRequired
+  },
+
   getStateFromStoreOne: function () {
     return {
       valueOne: StoreOne.getValue()

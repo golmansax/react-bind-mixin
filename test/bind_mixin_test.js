@@ -18,7 +18,7 @@ describe('bind_mixin', function () {
   var component;
 
   beforeEach(function () {
-    component = React.createElement(Component);
+    component = React.createElement(Component, { number: 8 });
   });
 
   it('sets initial state', function () {
@@ -51,5 +51,12 @@ describe('bind_mixin', function () {
     React.unmountComponentAtNode(div);
     StoreOne.setValue('changed again');
     expect(instance.getStateFromStoreOne).not.to.have.been.called();
+  });
+
+  it('updates state when props change', function () {
+    var instance = TestUtils.renderIntoDocument(component);
+    sinon.spy(instance, 'getStateFromStoreOne');
+    instance.setProps({ number: 88 });
+    expect(instance.getStateFromStoreOne).to.have.been.called();
   });
 });
