@@ -13,6 +13,7 @@ var React = require('react');
 var TestUtils = require('react/addons').addons.TestUtils;
 var Component = require('./mock_component');
 var StoreOne = require('./mock_store_one');
+var StoreTwo = require('./mock_store_two');
 
 describe('bind_mixin', function () {
   var component;
@@ -21,15 +22,20 @@ describe('bind_mixin', function () {
     component = React.createElement(Component, { number: 8 });
   });
 
+  afterEach(function () {
+    StoreOne.reset();
+    StoreTwo.reset();
+  });
+
   it('sets initial state', function () {
     var instance = TestUtils.renderIntoDocument(component);
-    expect(instance.getDOMNode().textContent).to.equal('first,second');
+    expect(instance.getDOMNode().textContent).to.equal('8: first,second');
   });
 
   it('updates state when store changes', function () {
     var instance = TestUtils.renderIntoDocument(component);
     StoreOne.setValue('changed');
-    expect(instance.getDOMNode().textContent).to.equal('changed,second');
+    expect(instance.getDOMNode().textContent).to.equal('8: changed,second');
   });
 
   it('only calls the bound function when the store changes', function () {
@@ -58,5 +64,6 @@ describe('bind_mixin', function () {
     sinon.spy(instance, 'getStateFromStoreOne');
     instance.setProps({ number: 88 });
     expect(instance.getStateFromStoreOne).to.have.been.called();
+    expect(instance.getDOMNode().textContent).to.equal('88: first,second');
   });
 });

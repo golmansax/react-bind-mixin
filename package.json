@@ -33,9 +33,6 @@
     "sinon-chai": "latest",
     "travis-lint": "latest"
   },
-  "dependencies": {
-    "node-uuid": "latest"
-  },
   "scripts": {
     "test": "make test"
   }

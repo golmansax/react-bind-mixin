@@ -3,12 +3,17 @@
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
-var _value = 'first';
+var INITIAL_VALUE = 'first';
 var CHANGE_EVENT = 'change';
+var _value;
 
 var StoreOne = assign({}, EventEmitter.prototype, {
-  getValue: function () {
-    return _value;
+  getValue: function (number) {
+    return number + ': ' + _value;
+  },
+
+  reset: function () {
+    _value = INITIAL_VALUE;
   },
 
   setValue: function (value) {
@@ -28,5 +33,6 @@ var StoreOne = assign({}, EventEmitter.prototype, {
     this.emit(CHANGE_EVENT);
   }
 });
+StoreOne.reset();
 
 module.exports = StoreOne;

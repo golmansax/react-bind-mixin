@@ -17,7 +17,7 @@ var Component = React.createClass({
 
   getStateFromStoreOne: function () {
     return {
-      valueOne: StoreOne.getValue()
+      valueOne: StoreOne.getValue(this.props.number)
     };
   },
 
