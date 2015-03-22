@@ -86,7 +86,7 @@ describe('bind_mixin', function () {
         BindMixin(StoreTwo, 'getStateFromStore')
       ],
 
-      getStateFromStore: function (props) {
+      getStateFromStore: function () {
         return {};
       },
 
