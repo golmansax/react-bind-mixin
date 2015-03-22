@@ -29,8 +29,8 @@ var Component = React.createClass({
   // this.props passed in for 'props'
   // except for when called from componentWillReceiveProps (newProps passed in)
   getStateFromStore: function (props) {
-    // This part can be custom to the store implementation
     return {
+      // 'getValue' API is custom to the store implementation
       value: MyStore.getValue(props.id)
     };
   },
@@ -44,6 +44,7 @@ var Component = React.createClass({
 Now the state of our component will be:
 * initialized with the initial value of the Store
 * updated when the Store is changed
+* updated when props are changed
 
 ## Makes testing easy!
 
