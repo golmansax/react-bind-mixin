@@ -14,6 +14,7 @@ var TestUtils = require('react/addons').addons.TestUtils;
 var Component = require('./mock_component');
 var StoreOne = require('./mock_store_one');
 var StoreTwo = require('./mock_store_two');
+var BindMixin = require('../lib/bind_mixin');
 
 describe('bind_mixin', function () {
   var component;
@@ -59,11 +60,44 @@ describe('bind_mixin', function () {
     expect(instance.getStateFromStoreOne).not.to.have.been.called();
   });
 
+  it('can unmount independently of other components', function () {
+    var divOne = document.createElement('div');
+    React.render(component, divOne);
+
+    var divTwo = document.createElement('div');
+    React.render(component, divTwo);
+    React.unmountComponentAtNode(divTwo);
+
+    React.unmountComponentAtNode(divOne);
+  });
+
   it('updates state when props change', function () {
     var instance = TestUtils.renderIntoDocument(component);
     sinon.spy(instance, 'getStateFromStoreOne');
     instance.setProps({ number: 88 });
     expect(instance.getStateFromStoreOne).to.have.been.called();
     expect(instance.getDOMNode().textContent).to.equal('88: first,second');
+  });
+
+  it('throw an error if bound to the same function', function () {
+    var MyComponent = React.createClass({
+      mixins: [
+        BindMixin(StoreOne, 'getStateFromStore'),
+        BindMixin(StoreTwo, 'getStateFromStore')
+      ],
+
+      getStateFromStore: function (props) {
+        return {};
+      },
+
+      render: function () {
+        return null;
+      }
+    });
+    var myComponent = React.createElement(MyComponent, { number: 8 });
+
+    expect(function () {
+      TestUtils.renderIntoDocument(myComponent);
+    }).to.throw('Cannot bind to this.getStateFromStore');
   });
 });
