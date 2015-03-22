@@ -15,9 +15,9 @@ var Component = React.createClass({
     number: React.PropTypes.number.isRequired
   },
 
-  getStateFromStoreOne: function () {
+  getStateFromStoreOne: function (props) {
     return {
-      valueOne: StoreOne.getValue(this.props.number)
+      valueOne: StoreOne.getValue(props.number)
     };
   },
 

@@ -26,10 +26,12 @@ var BindMixin = require('react-bind-mixin');
 var Component = React.createClass({
   mixins: [BindMixin(MyStore, 'getStateFromStore')],
 
-  getStateFromStore: function () {
+  // this.props passed in for 'props'
+  // except for when called from componentWillReceiveProps (newProps passed in)
+  getStateFromStore: function (props) {
     // This part can be custom to the store implementation
     return {
-      value: MyStore.getValue()
+      value: MyStore.getValue(props.id)
     };
   },
 
