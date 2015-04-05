@@ -79,7 +79,7 @@ describe('bind_mixin', function () {
     expect(instance.getDOMNode().textContent).to.equal('88: first,second');
   });
 
-  it('throw an error if bound to the same function', function () {
+  it('throws an error if bound to the same function', function () {
     var MyComponent = React.createClass({
       mixins: [
         BindMixin(StoreOne, 'getStateFromStore'),
@@ -99,5 +99,21 @@ describe('bind_mixin', function () {
     expect(function () {
       TestUtils.renderIntoDocument(myComponent);
     }).to.throw('Cannot bind to this.getStateFromStore');
+  });
+
+  it('throws an error if bound attr is not a function', function () {
+    var MyComponent = React.createClass({
+      mixins: [BindMixin(StoreOne, 'nothing')],
+
+      render: function () {
+        return null;
+      }
+    });
+
+    var myComponent = React.createElement(MyComponent, { number: 8 });
+
+    expect(function () {
+      TestUtils.renderIntoDocument(myComponent);
+    }).to.throw('Cannot bind to this.nothing because it is not a function');
   });
 });
